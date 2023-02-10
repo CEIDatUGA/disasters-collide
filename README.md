@@ -4,6 +4,10 @@
 # disasters-collide
 
 <!-- badges: start -->
+
+Cite the code and data:
+[![DOI](https://zenodo.org/badge/599836056.svg)](https://zenodo.org/badge/latestdoi/599836056)
+
 <!-- badges: end -->
 
 # Intersection of social vulnerability, hurricanes, and COVID-19 outcomes
