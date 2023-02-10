@@ -1,0 +1,61 @@
+﻿variable,type,description
+hsa,chr,5 digit Hospital Service Area (HAS) code
+hosp.count,int,number of hospitals in HAS
+hsa.name,chr,HSA name
+hrr,chr,3 digit Hospital Referral Region (HRR) code
+hrr.name,chr,HRR name
+state.code,chr,2 letter state code
+state.name,chr,state name
+state.fips              ,chr,2 digit state FIPS code
+HHS.region,chr,2 digit Health and Humans Services (HHS) region
+population.2020         ,dbl,HSA population (2020 census)
+area.2020,dbl,HSA area (square miles)
+hunits.2020,dbl,number of housing units in HSA
+lat.pop,dbl,mean center of population (lattitude) per 2020 census
+lon.pop,dbl,mean center of population (longitude) per 2020 census
+lat.area,dbl,geographic centroid  (lattitude)
+lon.area,dbl,geographic centroid (longitude)
+lat.hunits,dbl,"centroid  (lattitude), weighted by number of housing units"
+lon.hunits,dbl,"centroid (longitude), weighted by number of housing units"
+sovi                    ,dbl,"SoVI score, aggregated to HSA by using the population-weighted mean of county-level SoVI scores (z-score with mean 0, standard deviation 1)"
+bric.social             ,dbl,"BRIC Human Well-Being/Cultural/Social score (0-1), population-weighted mean of county-level score"
+bric.economic           ,dbl,"BRIC Economic/Financial score (0-1), population-weighted mean of county-level score"
+bric.infrastructure     ,dbl,"BRIC Infrastructure/Built Environment/Housing score (0-1),, population-weighted mean of county-level score"
+bric.institutional      ,dbl,"BRIC Institutional/Governance score (0-1),, population-weighted mean of county-level score"
+bric.community          ,dbl,"BRIC Community Capacity score (0-1),, population-weighted mean of county-level score"
+bric.environment        ,dbl,"BRIC social score score (0-1),, population-weighted mean of county-level score"
+bric.total              ,dbl,"BRIC overall score (0-6), sum of bric.social, bric.economic, bric.infrastructure, bric.institutional, bric.community, bric.environment  "
+z_bric.social             ,dbl,z-score of bric.social             
+z_bric.economic           ,dbl,z-score of bric.economic           
+z_bric.infrastructure     ,dbl,z-score of bric.infrastructure     
+z_bric.institutional      ,dbl,z-score of bric.institutional      
+z_bric.community          ,dbl,z-score of bric.community          
+z_bric.environment        ,dbl,z-score of bric.environment        
+z_bric.total              ,dbl,z-score of bric.total              
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+svi.2018.theme1.percentile,dbl,SVI theme 1 percentile for 2018
+svi.2018.theme2,dbl,SVI theme 2 score (sum of variable percentiles) for 2018
+svi.2018.theme2.percentile,dbl,SVI theme 2 percentile for 2018
+svi.2018.theme3,dbl,SVI theme 3 score (sum of variable percentiles) for 2018
+svi.2018.theme3.percentile,dbl,SVI theme 3 percentile for 2018
+svi.2018.theme4,dbl,SVI theme 4 score (sum of variable percentiles) for 2018
+svi.2018.theme4.percentile,dbl,SVI theme 4 percentile for 2018
+covid.cum.cases         ,dbl,Cumulative COVID-19 case reports (Johns Hopkins University)
+covid.cum.deaths        ,dbl,Cumulative COVID-19 death reports (Johns Hopkins University)
+covid.cum.cases.per100k ,dbl,Cumulative COVID-19 cases per 100k (using 2020 population)
+covid.cum.deaths.per100k,dbl,Cumulative COVID-19 deaths per 100k (using 2020 population)

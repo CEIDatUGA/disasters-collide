@@ -1,0 +1,6 @@
+﻿variable,type,description
+storm_id,chr,"AL (spaces 1 and 2, ""Atlantic Basin"") [2-digit number] (spaces 3 and 4, ATCF cyclone number for that year) - [4-digit year]"
+usa_atcf_id,chr,"AL (spaces 1 and 2, ""Atlantic Basin"") [2-digit number] (spaces 3 and 4, ATCF cyclone number for that year) [4-digit year]"
+date,chr,"dat and time of landfall. date time string: yyyymmddhhmm (times are standard synoptic times 0000, 0600, 1200, and 1800 UTC)"
+wind,dbl,maximum wind speed (knots)
+geometry,list,"R list of classes ""sfc_MULTILINESTRING"" and ""sfc"" containing comma-delimited pairs of decimal longitudes and lattitudes."

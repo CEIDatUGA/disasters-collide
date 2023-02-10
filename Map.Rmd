@@ -1,0 +1,74 @@
+---
+title: "Intersection of social vulnerability, hurricanes, and COVID-19 outcomes"
+date: "Feb 8, 2023"
+output: pdf_document
+urlcolor: blue
+---
+
+```{r setup, include=FALSE, message=FALSE, results = 'hide'}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
+```
+
+Contributors: 
+
+John M. Drake, Eric Marty, Kamal J.K. Gandhi, Meredith Welch-Devine,  
+Brian Bledsoe, Marshall Shepherd, Lynne Seymour, Christine C. Fortuin, Cristian Montes
+
+Data and code prepared by Eric Marty.
+
+
+```{r dependencies}
+# Dependencies: 
+# install.packages("here")
+# install.packages("tidyverse")
+# install.packages("sf")
+# install.packages("stringr")
+
+library(here)
+library(tidyverse)
+library(sf)
+library(stringr) # string substitutions
+source(here::here("R/visualization.R"))
+```
+
+## Data
+
+```{r data}
+# Load data
+
+# COVID-19 outcomes, SoVI scores, BRIC scores by HSA
+master_dataset_hsa_2020 <- read_rds(here::here('data/master_dataset_hsa_2020.Rds')) %>% 
+  dplyr::filter(HHS.region %in% c("04","06"))  # restrict to HHS regions 4 and 6
+
+# Hurricane Tracks
+hurr_tracks.sf <- read_rds(here::here('data/hurr_tracks.sf.Rds'))
+
+# Bounding box
+bounding_box <- sf::st_bbox(master_dataset_hsa_2020)
+bounding_box.sf <- bounding_box %>% sf::st_as_sfc()
+
+# Tracks in bounding box
+intersection <- sf::st_intersects(hurr_tracks.sf, bounding_box.sf)
+hurr_tracks_study.sf <- hurr_tracks.sf[which(lengths(intersection) != 0), ]
+
+# Filter hurricanes by date
+hurr_tracks_study.sf <- hurr_tracks_study.sf %>% 
+  filter(date >= "201501010000" & date <= "202101010000")
+```
+
+## Map
+
+```{r map, warnings = FALSE}
+
+bivariateChoropleth(data = master_dataset_hsa_2020,
+                    x = "sovi",
+                    y = "covid.cum.deaths.2020.per100k",
+                    nbins = 4,
+                    x.breaks = NULL,
+                    y.breaks = "log",
+                    x.label = "SoVI score",
+                    y.label = "Deaths per 100k",
+                    overlay = hurr_tracks_study.sf)
+ggsave("covid_sovi_hurr.pdf", width = 150, height = 150/2.4, units = "mm", device = "pdf")
+ggsave("covid_sovi_hurr.jpg", width = 150, height = 150/2.4, units = "mm", device = "jpg", bg = "white")
+```
